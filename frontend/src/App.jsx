@@ -2,32 +2,44 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import axios from 'axios';
+import { useEffect } from 'react';
+import TodoList from './components/TodoList.jsx';
+import AddTodo from './components/AddTodo.jsx';
+import api from './api.js';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [health, setHealth] = useState("loading...");
+  const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:5000/api/health").then((response) => {
+        console.log("Backend response: ", response.data);
+        setHealth(response.data.status);
+      })
+      .catch((error) => {
+        console.log("API Error: ", error);
+        setHealth("error");
+      });
+
+    api.get('/todos')
+      .then(res => setTodos(res.data))
+      .catch(err => console.error(err));
+  }, []);
+
+  const handleAdd = (newTodo) => {
+    setTodos([...todos, newTodo]);
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <h1>Health: {health}</h1>
+
+      <div className="p-4 max-w-md mx-auto">
+        <h1 className="text-2xl font-bold mb-4">AI-Powered To-Do App</h1>
+        <AddTodo onAdd={handleAdd} />
+        <TodoList todos={todos} setTodos={setTodos} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
