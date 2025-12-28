@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import axios from 'axios';
 import { useEffect } from 'react';
+import Sidebar from './components/Sidebar.jsx';
 import TodoList from './components/TodoList.jsx';
 import AddTodo from './components/AddTodo.jsx';
 import CompletedList from './components/CompletedList.jsx';
@@ -34,7 +35,12 @@ function App() {
 
   return (
     <>
-      <h1 className="text-2xl font-bold mb-4">Status: <span id={`status-${health}`}>{health}</span></h1>
+      
+      
+      <aside className="sidebar">
+        <Sidebar />
+        <p className="status text-sm">Status: <span id={`status-${health}`}>{health}</span></p>
+      </aside>
 
       <div className="p-4 max-w-md mx-auto">
         <h1 className="text-2xl font-bold mb-4">AI-Powered To-Do App</h1>
