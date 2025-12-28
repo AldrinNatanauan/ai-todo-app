@@ -18,10 +18,10 @@ export default function TodoList({ todos, setTodos }) {
 
   return (
     <ul>
-      {todos.map(todo => (
+      {todos.filter(todo => !todo.completed).map(todo => (
         <li key={todo.id} className={`flex justify-between items-center p-2 border-b ${todo.completed ? 'line-through' : ''}`}>
           <span onClick={() => toggleComplete(todo.id)} className="cursor-pointer">{todo.title}</span>
-          <button onClick={() => deleteTodo(todo.id)} className="ml-2 text-red-500">Delete</button>
+          <button onClick={() => deleteTodo(todo.id)} className="ml-2 text-red-500"><i class='bxr  bx-trash-alt'></i> </button>
         </li>
       ))}
     </ul>

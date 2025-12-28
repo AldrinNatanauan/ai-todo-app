@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import TodoList from './components/TodoList.jsx';
 import AddTodo from './components/AddTodo.jsx';
+import CompletedList from './components/CompletedList.jsx';
 import api from './api.js';
 
 function App() {
@@ -33,12 +34,19 @@ function App() {
 
   return (
     <>
-      <h1>Health: {health}</h1>
+      <h1 className="text-2xl font-bold mb-4">Status: <span id={`status-${health}`}>{health}</span></h1>
 
       <div className="p-4 max-w-md mx-auto">
         <h1 className="text-2xl font-bold mb-4">AI-Powered To-Do App</h1>
         <AddTodo onAdd={handleAdd} />
+      </div>
+
+      <div className="p-4 max-w-md mx-auto">
         <TodoList todos={todos} setTodos={setTodos} />
+      </div>
+
+      <div className="p-4 max-w-md mx-auto">
+        <CompletedList todos={todos} setTodos={setTodos} />
       </div>
     </>
   )

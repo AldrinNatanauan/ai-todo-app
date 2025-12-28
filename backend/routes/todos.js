@@ -35,8 +35,8 @@ router.put('/:id', (req, res) => {
         return res.status(404).json({ message: 'Todo not found' });
     }
 
-    const deleted = todos.splice(index, 1);
-    res.json(deleted[0]);
+    todos[index].completed = true;
+    res.status(200).json(todos[index]);
 });
 
 
