@@ -37,23 +37,28 @@ function App() {
     <>
       
       
-      <aside className="sidebar">
+      <aside className="fixed top-0 left-0 h-screen w-[15%] bg-[hsl(0,0%,10%)] p-4 flex flex-col gap-4">
         <Sidebar />
-        <p className="status text-sm">Status: <span id={`status-${health}`}>{health}</span></p>
+        <p className="status text-sm text-[hsl(0,0%,50%)]">Status: <span id={`status-${health}`}>{health}</span></p>
       </aside>
 
-      <div className="p-4 max-w-md mx-auto">
-        <h1 className="text-2xl font-bold mb-4">AI-Powered To-Do App</h1>
-        <AddTodo onAdd={handleAdd} />
+      <div className="flex flex-col gap-4 min-h-screen p-10 w-[60%] items-center" id="container">
+        <h1 className="text-4xl font-bold mb-4 self-start">Today</h1>
+        <div className="p-4 max-w-md">
+          <h1 className="text-2xl font-bold mb-4">AI-Powered To-Do App</h1>
+          <AddTodo onAdd={handleAdd} />
+        </div>
+
+        <div className="p-4 max-w-md w-[100%]">
+          <TodoList todos={todos} setTodos={setTodos} />
+        </div>
+
+        <div className="p-4 max-w-md w-[100%]">
+          <CompletedList todos={todos} setTodos={setTodos} />
+        </div>
       </div>
 
-      <div className="p-4 max-w-md mx-auto">
-        <TodoList todos={todos} setTodos={setTodos} />
-      </div>
-
-      <div className="p-4 max-w-md mx-auto">
-        <CompletedList todos={todos} setTodos={setTodos} />
-      </div>
+      
     </>
   )
 }

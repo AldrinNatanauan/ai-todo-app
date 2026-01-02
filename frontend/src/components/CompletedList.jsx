@@ -15,7 +15,7 @@ export default function CompletedList({ todos, setTodos }) {
                 todo.completed ? (
                     <li key={todo.id} className={`flex justify-between items-center p-2 border-b text-green-500 : ''}`}>
                         <span className="line-through">{todo.title}</span>
-                        <button onClick={() => deleteTodo(todo.id)} className="ml-2 text-red-500"><i class='bxr  bx-trash-alt'></i> </button>
+                        <button onClick={() => deleteTodo(todo.id)} className="ml-2 text-red-500"><i className='bxr  bx-trash-alt'></i> </button>
                     </li>
                 ) : null
             ))}

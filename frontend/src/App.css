@@ -1,35 +1,12 @@
 #root {
-  /* Margin */
-  --margin-xxs: .25rem;
-  --margin-xs: .5rem;
-  --margin-s: .75rem;
-  --margin-m: 1rem;
-  --margin-l: 1.25rem;
-  --margin-xl: 1.75rem;
-  --margin-xxl: 2.5rem;
-
-  /* Padding */
-  --padding-xxs: .25rem;
-  --padding-xs: .5rem;
-  --padding-s: .75rem;
-  --padding-m: 1rem;
-  --padding-l: 1.25rem;
-  --padding-xl: 1.75rem;
-  --padding-xxl: 2.5rem;
-
-  /* Colors */
-  --gray10: hsl(0, 0%, 10%);
-  --gray30: hsl(0, 0%, 30%);
-  --gray50: hsl(0, 0%, 50%);
-  --gray70: hsl(0, 0%, 70%);
-  --gray90: hsl(0, 0%, 90%);
-  --colora: #07553B;
-  --colorb: #CED46A;
-
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
 }
 
 .logo {
@@ -74,72 +51,4 @@
 
 #status-error {
   color: red;
-}
-
-.sidebar{
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 15%;
-  background-color: var(--gray10);
-  padding: var(--padding-m);
-  display: flex;
-  flex-direction: column;
-  gap: var(--margin-m);
-}
-
-.taskControlButtons{
-  margin-bottom: auto;
-  display: flex;
-  flex-direction: column;
-  gap: var(--margin-xs);
-  border-top: var(--gray50) 1px solid;
-  padding-top: var(--margin-xs);
-}
-
-.sidebarBtns{
-  background-color: transparent;
-  padding: var(--padding-xxs);
-  border-radius: .5rem;
-  display: flex;
-  align-items: center;
-}
-
-.iconHolder{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: var(--margin-xxs);
-}
-
-.sidebarBtns i{
-  font-size: 1.5rem;
-  padding: var(--padding-xxs);
-}
-
-.sidebarBtns span{
-  font-weight: bold;
-  padding: var(--padding-xxs);
-  margin: 0;
-}
-
-.createBtn{
-  display: flex;
-  flex-direction: column;
-}
-
-#createProjectBtn{
-  background-color: var(--colora);
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.createBtn span{
-  font-size: 1.5rem;
-  font-weight: bold;
-  padding: var(--padding-xxs);
-  margin: 0;
 }
